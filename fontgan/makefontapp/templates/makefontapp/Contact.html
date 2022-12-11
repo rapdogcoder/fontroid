@@ -1,0 +1,70 @@
+{% load static %}
+
+
+<!DOCTYPE HTML>
+<script>
+	axios.defaults.xsrfCookieName = 'csrftoken'
+	axios.defaults.xsrfHeaderName = "X-CSRFToken"
+	axios.defaults.headers.common['X-CSRFToken'] = getCookie("csrftoken");
+</script>
+
+<html>
+	<head>
+		<title>폰트로이드 - contact us</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'makefontapp/assets/css/main.css' %}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body class="is-preload">
+
+		{% include './header.html' %}
+
+    <!-- One -->
+        <section id="one" class="main special">
+            <div class="container">
+                <div class="content">
+                    <header class="major">
+                        <h2>Contact Us</h2>
+                    </header>
+                    <div>
+                        <form method="POST"  enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div>
+                                <label for="uname">이름</label>
+                                <input id="uname" name="uname" placeholder="" type="text" value="">
+                            </div>
+                            <br>
+                            <div>
+                                <label for="phone_number">연락처</label>
+                                <div>
+                                    <input id="phone_number" maxlength="3" name="phone_number1" placeholder="" type="tel" value="">
+                                    <span>-</span>
+                                    <input id="phone_number" maxlength="4" name="phone_number2" placeholder="" type="tel" value="">
+                                    <span>-</span>
+                                    <input id="phone_number" maxlength="4" name="phone_number3" placeholder="" type="tel" value="">
+                                </div>
+                            </div>
+                            <br>
+                            <div id="email">
+                                <label for="email">이메일</label>
+                                <div>
+                                    <input id="email" name="email" placeholder="" type="text" value="">
+                                </div>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="content">내용</label>
+                                <textarea id="content" name="content" placeholder="문의 내용을 입력하세요" rows="10"></textarea>
+                            </div>
+                            <br>
+                            <input type="submit" value="제출">
+                        </form>
+                    </div>
+                </div>
+                <!-- <a href="#two" class="goto-next scrolly">Next</a> -->
+            </div>
+        </section>
+			{% include './footer.html' %}
+	</body>
+</html>

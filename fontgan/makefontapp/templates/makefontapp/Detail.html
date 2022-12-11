@@ -1,0 +1,92 @@
+{% load static %}
+
+
+<!DOCTYPE HTML>
+<script>
+	axios.defaults.xsrfCookieName = 'csrftoken'
+	axios.defaults.xsrfHeaderName = "X-CSRFToken"
+	axios.defaults.headers.common['X-CSRFToken'] = getCookie("csrftoken");
+</script>
+
+<html>
+	<head>
+		<title>폰트로이드</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'makefontapp/assets/css/main.css' %}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body class="is-preload">
+
+		{% include './header.html' %}
+
+    <!-- One -->
+    <section id="two" class="main special">
+        <div class="container">
+            <span class="image fit primary"><img src="{% static 'makefontapp/images/pic02.jpg' %}" alt="" /></span>
+            <div class="content">
+                <header class="major">
+                    <h2>폰트 제작 과정</h2>
+                </header>
+                
+                <br><br>
+                <h3>기존 폰트 제작 방법</h3>
+                <img class="prior" src="{% static 'makefontapp/images/prior_font_gen.png' %}">
+                <br>
+                <p>
+                    디자이너가 상용한글 2350자 또는 한글 전체 조합 11172자를 직접 하나하나 제작<br>
+                    <b>→ 제작 시간과 비용이 너무 많이 필요함</b>
+                    <br>
+                </p>
+                
+                <br><br><br>
+                <h3>GAN</h3>
+                <p>
+                    GAN(Generative Adversarial Networks)은 가짜 이미지를 생성하는 생성자(Generator)와 이미지가 진짜 이미지인지 생성된 이미지인지를 판별하는 판별자(Discriminator)가 서로 경쟁하며 학습하는 모델입니다.
+                    <br>
+                </p>
+
+                <br><br><br>
+                <h3>사용 모델</h3>
+                <p>우리 모델의 생성자는 3가지 부분으로 구성되어 있습니다.<br>
+                    <br>
+                    <b>f2f</b> : 고딕체 글자로부터 손글씨 글자를 생성<br>
+                    <b>f2s</b> : 생성된 손글씨의 골격을 추출<br>
+                    <b>s2f</b> : 글자의 골격에서 손글씨를 복원<br>
+                </p>
+                <img src="{% static 'makefontapp/images/model.png' %}">
+                <img src="{% static 'makefontapp/images/result.png' %}">
+
+                <br><br><br><br>
+                <h3>제작 전체 과정</h3>
+                <p>
+                    단 10시간만에 손글씨 폰트를 받아볼 수 있습니다.<br>
+                    <b>지금 바로 시작하세요.</b>
+            
+                </p>
+                <img src="{% static 'makefontapp/images/post_font_gen.png' %}">
+                <!-- <ul class="icons-grid">
+                    <li>
+                        <span class="icon solid major fa-camera-retro"></span>
+                        <h3>우리의 사진들</h3>
+                    </li>
+                    <li>
+                        <span class="icon solid major fa-pencil-alt"></span>
+                        <h3>우리의 사진들2</h3>
+                    </li>
+                    <li>
+                        <span class="icon solid major fa-code"></span>
+                        <h3>니얼굴</h3>
+                    </li>
+                    <li>
+                        <span class="icon solid major fa-coffee"></span>
+                        <h3>니얼굴 2</h3>
+                    </li>
+                </ul> -->
+            </div>
+        </div>
+    </section>
+
+	{% include './footer.html' %}
+	</body>
+</html>

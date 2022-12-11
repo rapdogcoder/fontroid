@@ -1,0 +1,89 @@
+{% load static %}
+
+
+<!DOCTYPE HTML>
+<script>
+	axios.defaults.xsrfCookieName = 'csrftoken'
+	axios.defaults.xsrfHeaderName = "X-CSRFToken"
+	axios.defaults.headers.common['X-CSRFToken'] = getCookie("csrftoken");
+</script>
+
+<html>
+	<head>
+		<title>폰트로이드</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'makefontapp/assets/css/main.css' %}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body class="is-preload">
+
+		{% include './header.html' %}
+
+    <!-- One -->
+        <section id="one" class="main special">
+            <div class="container">
+                <div class="content">
+                    <header class="major">
+                        <h2>ABOUT US</h2>
+                    </header>
+                    <div>
+                        <div>
+                            <img class="imogi" src="{% static 'makefontapp/images/ksg.png' %}" alt="" />
+                        </div>
+                        <b> 김슬기 </b> <br>
+                        <i class="fa fa-envelope"><span class="label"> ksglm1231@gmail.com</span></i> <br>
+                        <a href="https://github.com/seulgiKim95"><p><i class="fa fa-github"><span class="label"> seulgiKim95</span></i></p></a> <br> <br>
+                        <p> 역할 : 데이터 전처리 및 모델링 </p>
+                    </div>
+                </div>
+                <!-- <a href="#two" class="goto-next scrolly">Next</a> -->
+            </div>
+        </section>
+
+    <!-- One -->
+        <section id="two" class="main special">
+            <div class="container">
+                <div class="content">
+                    <!-- <header class="major">
+                        <h2>ABOUT US</h2>
+                    </header> -->
+                    <div>
+                        <div>
+                            <img class="imogi" src="{% static 'makefontapp/images/jys.png' %}" alt="" />
+                        </div>
+                        <b> 장윤식 </b> <br>
+                        <i class="fa fa-envelope"><span class="label"> sbgt40766@gmail.com</span></i> <br>
+                        <a href="https://github.com/rapdogcoder"><p><i class="fa fa-github"><span class="label"> rapdogcoder</span></i></p></a><br><br>
+                        <p> 역할 : 웹 서버 및 추론 서버 구축 </p>
+                    </div>
+                </div>
+                <!-- <a href="#three" class="goto-next scrolly">Next</a> -->
+            </div>
+        </section>
+
+    <!-- Three -->
+        <section id="three" class="main special">
+            <div class="container">
+                <div class="content">
+                    <!-- <header class="major">
+                        <h2>ABOUT US</h2>
+                    </header> -->
+                    <div>
+                        <div>
+                            <img class="imogi" src="{% static 'makefontapp/images/jkh.png' %}" alt="" />
+                        </div>
+                        <b> 조경희 </b> <br>
+                        <i class="fa fa-envelope"><span class="label"> cgh_0129@naver.com</span></i> <br>
+                        <a href="https://github.com/cho-gh"><p><i class="fa fa-github"><span class="label"> cho-gh</span></i></p></a> <br><br>
+                        <p> 역할 : 데이터 전처리 및 모델링 </p>
+                    </div>
+                </div>
+                <!-- <a href="#three" class="goto-next scrolly">Next</a> -->
+            </div>
+        </section>
+
+
+			{% include './footer.html' %}
+	</body>
+</html>

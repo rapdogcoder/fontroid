@@ -1,0 +1,91 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<script>
+	axios.defaults.xsrfCookieName = 'csrftoken'
+	axios.defaults.xsrfHeaderName = "X-CSRFToken"
+	axios.defaults.headers.common['X-CSRFToken'] = getCookie("csrftoken");
+</script>
+
+<!--
+	Highlights by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>폰트로이드</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'makefontapp/assets/css/main.css' %}" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+			@font-face {
+				font-family: "user_font";
+				/* src: url("{% static 'makefontapp/assets/font/DH.ttf' %}") format('truetype'); */
+				src: url("/static/../../media/uploads/userwords/{{font_path}}") format('truetype');
+				/* src: url("fontgan/{{font_path}}") format('truetype'); */
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		{% include "./header.html" %}
+
+		<!-- One -->
+			<section id="one" class="main special">
+				<div class="container">
+					<span class="image fit primary"><img src="{% static 'makefontapp/images/pic01.jpg' %}" alt="" /></span>
+					<div class="content">
+						<header class="major">
+							<h2>폰트로이드</h2>
+						</header>
+						<p>글꼴을 직접 사용해보세요!</p>
+						<textarea style="font-family: 'user_font'" class="font_test" rows="5" cols="33" placeholder="가나다라마바사"></textarea>
+						<br>
+						<ul class="actions special">
+                            <li><a href="/static/../../media/uploads/userwords/{{font_path}}" class="button primary" download>Download</a></li>
+                        </ul>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</div>
+			</section>
+		
+		<!-- Two -->
+		<section id="two" class="main special">
+            <div class="container">
+                <div class="content">
+                    <header class="major">
+                        <h2>🌱자라나라 새싹새싹🌱</h2>
+                        <!-- <h2>성능 개선에 도움을 주세요!</h2> -->
+                    </header>
+                    <!-- <img id="sesac" src="{% static 'makefontapp/images/sesac.png' %}" /> -->
+					<p>
+						마음에 안드는 글자를 적고 글자 이미지를 업로드 해주세요.<br>
+						도움의 손길을 주실 때마다 새싹이 자라납니다.🌳
+					</p>
+                    <div>
+                        <form class="feedback" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+							<div class="divbox" id="divbox_id">
+                                <div class="filebox">
+                                    <div><input class="text" type="text" name="char0" placeholder="가"></div>                     
+                                    <input id="upload-name0" class="upload-name" value="첨부파일" placeholder="첨부파일">         
+                                    <label for="file0">파일찾기</label> 
+                                    <input type="file" id="file0" name="char_img0" accept="image/png, image/jpg">             
+                                </div>
+                            </div>
+							<input type="button" onclick="add_textbox()" value="➕">
+                            <input type="submit" value="제출">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+		{% include "./footer.html" %}
+			
+
+	</body>
+</html>

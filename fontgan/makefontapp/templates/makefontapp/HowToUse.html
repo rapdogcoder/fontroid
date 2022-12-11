@@ -1,0 +1,81 @@
+{% load static %}
+
+
+<!DOCTYPE HTML>
+<script>
+	axios.defaults.xsrfCookieName = 'csrftoken'
+	axios.defaults.xsrfHeaderName = "X-CSRFToken"
+	axios.defaults.headers.common['X-CSRFToken'] = getCookie("csrftoken");
+</script>
+
+<html>
+	<head>
+		<title>폰트로이드</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'makefontapp/assets/css/main.css' %}" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body class="is-preload">
+
+		{% include './header.html' %}
+
+    <!-- One -->
+    <section id="one" class="main">
+        <div class="container">
+            <div class="content">
+                <header class="major">
+                    <h2>How To Use</h2>
+                </header>
+                <section>
+                    <header>
+                        <h4> Download and Write Template</h4>
+                    </header>
+                    <p> 
+                        아래에서 210자의 템플릿을 다운로드 받아 손글씨를 작성해주세요.
+                        손글씨 작성 후 스캔하여 아래의 폼을 채워주세요.
+                        작성하신 손글씨는 사용자의 폰트 제작 이외에는 사용되지 않습니다.
+                    </p>
+                    <div>
+                        <ul class="actions special">
+                            <li><a href="{% static 'makefontapp/images/210_template.pdf' %}" class="button primary" download>Download</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            <a href="#two" class="goto-next scrolly">Next</a>
+        </div>
+    </section>
+    <!-- Two -->
+    <section id="two" class="main">
+        <div class="container">
+            <div class="content">
+            <header class="major">
+                <h2>make your own fonts</h2>
+            </header>
+            <p>
+                아래의 양식을 작성해주세요!<br>
+                폰트제작이 완료되면 작성해주신 이메일을 통해 알려드립니다!
+            </p>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row gtr-uniform">							
+                    <div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
+                    <div class="col-6 col-12-xsmall"><input type="password" name="password" id="password" placeholder="password" /></div>
+                    <!-- <div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div> -->
+                    <input type="file" name='file' id="file"/>
+                    <!-- <input type="file" name='file' id="file" multiple='multiple'/> -->
+                    <div class="col-12">
+                        <ul class="actions special">
+                            <li><input type="submit" value="Send Message" class="primary"/></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+    </section>
+
+	{% include './footer.html' %}
+	</body>
+</html>
